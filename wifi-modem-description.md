@@ -92,8 +92,6 @@ Parameters:
     
    + 3: Maximum datagram size allowed
   
-   + 4: Second set of capabilities and features flags
-
 Response:
 
  * Wrong block: `Invalid input parameter` error(code 4)
@@ -150,39 +148,7 @@ Response:
  
   + Two bytes: Maximum incoming datagram size supported
 
-  + Two bytes: Maximum outgoing datagram size supported 
- 
- * 4: Second set of capabilities and features flags(body is 2 byte flags)
-
-   + Success status code
-
-   + Bit 0: Physical link is point to point
-
-   + Bit 1: Physical link is wireless
-
-   + Bit 2: Connection pool is shared by TCP, UDP and raw IP (see explanation about maximum simultaneus connection support below)
-
-   + Bit 3: Checking network state requires sending a packet in looback mode, or other expensive (time consuming) procedure
-
-   + Bit 4: The TCP/IP handling code is assisted by external hardware
-
-   + Bit 5: The loopback address (127.x.x.x) is supported
-
-   + Bit 6: A host name resolution cache is implemented
-
-   + Bit 7: IP datagram fragmentation is supported
-
-   + Bit 8: User timeout suggested when opening a TCP connection is actually applied
-
-   + Bit 9: TTL can be specified in the parameters block of TCPIP_SEND_ECHO
-
-   + Bit 10: TCPIP_DNS_Q is a blocking operation
-
-   + Bit 11: TCPIP_TCP_OPEN is a blocking operation
-
-   + Bit 12: The server certificate can be verified when opening a TCP connection with TLS in TCPIP_TCP_OPEN
-
-   + Bits 13-15: Unused
+  + Two bytes: Maximum outgoing datagram size supported
 
 ### 0x02 - Get IP address
 
@@ -470,3 +436,12 @@ Response:
 
  * Error code
 
+### 0x32 - Get Current AP
+
+No parameters.
+
+Response:
+
+ * Error code
+ 
+ * If no error - zero-terminated string
