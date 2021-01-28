@@ -87,9 +87,7 @@ Parameters:
  * Index of information block to retrieve:
  
    + 1: Capabilities flags
-   
    + 2: Connection pool size and status
-    
    + 3: Maximum datagram size allowed
   
 Response:
@@ -99,56 +97,35 @@ Response:
  * 1 - Capabilities(success error code and 2 bytes response):
    
    + Bit 0: Send ICMP echo messages (PINGs) and retrieve the answers
-
    + Bit 1: Resolve host names by querying a local hosts file or database
-
    + Bit 2: Resolve host names by querying a DNS server
-
    + Bit 3: Open TCP connections in active mode
-
    + Bit 4: Open TCP connections in passive mode, with specified remote socket
-
    + Bit 5: Open TCP connections in passive mode, with unsepecified remote socket
-
    + Bit 6: Send and receive TCP urgent data
-
    + Bit 7: Explicitly set the PUSH * Bit when sending TCP data
-
    + Bit 8: Send data to a TCP connection before the ESTABLISHED state is reached
-
    + Bit 9: Discard data in the output buffer of a TCP connection
-
    + Bit 10: Open UDP connections
-
    + Bit 11: Open raw IP connections
-
    + Bit 12: Explicitly set the TTL and ToS for outgoing datagrams
-
    + Bit 13: Explicitly set the automatic reply to PINGs on or off
-
    + Bit 14: Automatically obtain the IP addresses, by using DHCP or an equivalent protocol (deprecated)
-
    + Bit 15: Get the TTL and ToS for outgoing datagrams
     
  * 2: Connection pool size and status
 
-  + Success status code
-
-  + One byte: Maximum simultaneous TCP connections supported
-
-  + One byte: Maximum simultaneous UDP connections supported
-
-  + One byte: Free TCP connections currently available
-
-  + One byte: Free UDP connections currently available
+   + Success status code
+   + One byte: Maximum TCP simultaneous connections supported
+   + One byte: Maximum UDP simultaneous connections supported
+   + One byte: Free connections currently available(TCP)
+   + One byte: Same for UDP
 
  * 3: Maximum datagram size allowed
 
-  + Success status code
- 
-  + Two bytes: Maximum incoming datagram size supported
-
-  + Two bytes: Maximum outgoing datagram size supported
+   + Success status code
+   + Two bytes: Maximum incoming datagram size supported
+   + Two bytes: Maximum outgoing datagram size supported
 
 ### 0x02 - Get IP address
 
@@ -286,10 +263,6 @@ Parameters:
  * Remote IP address(4 bytes lexical order)
 
  * Remote port(2 bytes)
-
- * Local port(2 bytes)
-
- * One byte(1 - passive connection, 2 - active connection, other values - error)
 
 Response:
 
@@ -445,3 +418,13 @@ Response:
  * Error code
  
  * If no error - zero-terminated string
+ 
+### 0xFF - Get build information
+
+No parameters.
+
+Response:
+
+ * Error code(always success)
+ 
+ * Zero-terminated string containing version and build time
