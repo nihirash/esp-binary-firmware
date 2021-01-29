@@ -1,4 +1,3 @@
-#define MAGIC_STR "NiFi"
 #include "configuration.h"
 
 const char version_str[] = MAGIC_STR " " VERSION " " __DATE__ " " __TIME__;

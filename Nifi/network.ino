@@ -14,10 +14,16 @@ void resolve_request(char *domain) {
 
   int err = WiFi.hostByName(domain, addr, 10000);
 
-  if (addr[0] == 0 && 
-      addr[1] == 0 && 
-      addr[2] == 0 && 
-      addr[3] == 0) {
+  if ((addr[0] == 0 && 
+       addr[1] == 0 && 
+       addr[2] == 0 && 
+       addr[3] == 0) || 
+      
+      (addr[0] == 0xff && 
+       addr[1] == 0xff && 
+       addr[2] == 0xff && 
+       addr[3] == 0xff)
+      ) {
     publish_byte(ERR_DNS);
 
     return;

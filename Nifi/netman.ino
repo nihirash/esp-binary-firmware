@@ -58,10 +58,15 @@ void get_ips(char t) {
     
     return;
   }
-  IPAddress ip;
+
+  if (WiFi.status() != WL_CONNECTED) {
+    publish_byte(ERR_NO_NETWORK);
+
+    return;
+  }
   
   publish_byte(ERR_OK);
-  
+  IPAddress ip;
   switch(t) {
     
     case IP_LOCAL:

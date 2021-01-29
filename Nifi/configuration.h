@@ -1,10 +1,12 @@
 #ifndef CONFIGURATION_H
 #define CONFIGURATION_H
 
+#define MAGIC_STR "NiFi"
 #define VERSION "0.1"
 
 // UART
 #define BAUDRATE 115200
+#define ENABLE_FLOW
 
 // Exchange props
 #define MAX_FRAME 1300

@@ -2,23 +2,23 @@
 #define PROTOCOL_H
 
 enum ErrorCodes {
-    ERR_OK,          
-    ERR_NOT_IMP,    
-    ERR_NO_NETWORK,   
-    ERR_NO_DATA,    
-    ERR_INV_PARAM,    
-    ERR_QUERY_EXISTS, 
-    ERR_INV_IP,       
-    ERR_NO_DNS,       
-    ERR_DNS,        
-    ERR_NO_FREE_CONN, 
-    ERR_CONN_EXISTS,  
-    ERR_NO_CONN,    
-    ERR_CONN_STATE,   
-    ERR_BUFFER,       
-    ERR_LARGE_DGRAM,  
-    ERR_INV_OPER,
-    ERR_AUTH_FAILED
+    ERR_OK           = 0,          
+    ERR_NOT_IMP      = 1,    
+    ERR_NO_NETWORK   = 2,   
+    ERR_NO_DATA      = 3,    
+    ERR_INV_PARAM    = 4,    
+    ERR_QUERY_EXISTS = 5, 
+    ERR_INV_IP       = 6,       
+    ERR_NO_DNS       = 7,       
+    ERR_DNS          = 8,        
+    ERR_NO_FREE_CONN = 9, 
+    ERR_CONN_EXISTS  = 10,  
+    ERR_NO_CONN      = 11,    
+    ERR_CONN_STATE   = 12,   
+    ERR_BUFFER       = 13,       
+    ERR_LARGE_DGRAM  = 14,  
+    ERR_INV_OPER     = 15,
+    ERR_AUTH_FAILED  = 16
 };
 
 enum CapabilitiesSet {

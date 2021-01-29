@@ -28,7 +28,7 @@ Basic request can be present in next view:
 
    + Ports present as 2 bytes
 
-   + All multibyte data are big-endian
+   + All multibyte data are little-endian
 
 Commands without parameters contains only one byte. 
 
