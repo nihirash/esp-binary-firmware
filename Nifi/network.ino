@@ -117,6 +117,7 @@ void upd_send(char n) {
   char ipaddr[20];
   sprintf(ipaddr,"%u.%u.%u.%u", get_byte(), get_byte(), get_byte(), get_byte());
   unsigned int port = get_word();
+  unsigned int bs = get_word();
   
   if (!udp_pool[n].is_opened) {
     publish_byte(ERR_NO_CONN);
@@ -124,7 +125,6 @@ void upd_send(char n) {
     return;
   }
 
-  unsigned int bs = get_word();
   if (bs > MAX_FRAME) {
     publish_byte(ERR_LARGE_DGRAM);
     

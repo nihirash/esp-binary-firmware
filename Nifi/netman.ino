@@ -21,7 +21,7 @@ void get_ap_list() {
       publish_string(WiFi.SSID(i).c_str());
     }
 
-    publish_byte(0);
+    publish_byte(0xff);
 }
 
 void get_current_ap() {

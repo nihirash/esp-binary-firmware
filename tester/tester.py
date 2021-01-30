@@ -1,8 +1,8 @@
 import serial
 port = "/dev/cu.usbserial-1220" # your uart. In windows use just COM3, COM12 etc
 
-SSID     = "ssid"     # put here your wifi creds
-PASSWORD = "pass"
+SSID     = "PinnCom"     # put here your wifi creds
+PASSWORD = "lobotomy"
 
 uart = serial.Serial(port=port, baudrate=115200)
 
@@ -128,9 +128,10 @@ def get_ap_list():
     print("Getting AP list....", end='')
     if check_error() == b'\x00':
         while 1:
-            s = get_str()
-            if s == "": 
+            f = get_byte()
+            if f == b'\xff':
                 return
+            s = f.decode("ascii") + get_str()
             print(s)
 
 def set_ap(ssid, password):

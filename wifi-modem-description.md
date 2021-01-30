@@ -395,7 +395,7 @@ Response:
 
  * Error code
 
- * List of Zero-terminated strings(ends with zero) - AP names
+ * List of Zero-terminated strings(list ends with 0xff byte) - AP names
 
 ### 0x31 - Connect to AP
 
