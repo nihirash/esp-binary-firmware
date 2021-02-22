@@ -347,46 +347,6 @@ Response:
   * Data block
 
 
-### 0x19 - Enable or disable the automatic IP addresses retrieval
-
-Parameters:
-
- * Byte - get(0) or set(1) configuration
-
- * If set(1) - byte, where 
- 
-    + bit 0 - Set to automatically retrieve local IP address, subnet mask and default gateway
-    
-    + bit 1 - Set to automatically retrieve DNS servers addresses
-
-Response:
-
- * Error code
-
- * If no error - configuration byte
-
-### 0x1A - Manually configure an IP address
-
-Parameters:
-
- *  Index of address to set:
-
-  + 1: Local IP address
-
-  + 2: Peer IP address
-
-  + 3: Subnet mask
-
-  + 4: Default gateway
-
-  + 5: Primary DNS server IP address
-
-  + 6: Secondary DNS server IP address
-
-Response:
-
- * Error code
-
 ### 0x30 - Get WiFi AP list
 
 No parameters
