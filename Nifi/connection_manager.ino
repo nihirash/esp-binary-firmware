@@ -53,6 +53,7 @@ void close_tcp_all() {
       for (int i = 0;i < MAX_SOCKETS; i++)
       if (pool[i].connected())  {
         pool[i].stop();
+        pool[i].flush();
       }
 }
 
@@ -68,6 +69,7 @@ void close_tcp(char n) {
 
   if (pool[n].connected()) {
     pool[n].stop();
+    pool[n].flush();
 
     publish_byte(ERR_OK);
     

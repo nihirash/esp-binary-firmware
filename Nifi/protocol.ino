@@ -4,7 +4,7 @@
 #include "netman.h"
 #include "network.h"
 
-#define current_caps (CAP_RESOLVE_VIA_DNS | CAP_TCP_ACTIVE | CAP_DHCP)
+#define current_caps (CAP_RESOLVE_VIA_DNS | CAP_TCP_ACTIVE | CAP_OPEN_UPD | CAP_DHCP)
 
 void get_features() {
   switch(get_byte()) {
@@ -91,6 +91,10 @@ void process_operation() {
       tcp_status(get_byte());
       break;
 
+    case OP_EXT_STATUS_TCP:
+      tcp_ext_status(get_byte());
+      break;
+
     case OP_SEND_TCP:
       tcp_send(get_byte(), get_word());
       break;
@@ -98,6 +102,7 @@ void process_operation() {
     case OP_RECV_TCP:
       tcp_recv(get_byte(), get_word());
       break;
+      
     // WIFI
     case OP_GET_AP_LIST:
       get_ap_list();

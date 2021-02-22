@@ -44,13 +44,37 @@ void tcp_status(char n)
     publish_byte(ERR_OK);
     publish_byte(TCP_STATE_ESTABLISHED);
     publish_word(pool[n].available());
-
+        
     return;
   } 
 
     publish_byte(ERR_OK);
     publish_byte(TCP_STATE_UNKNOWN);
     publish_word(0);
+}
+
+void tcp_ext_status(char n) {
+  n--;
+  if (pool[n].connected() || pool[n].available()) {
+    IPAddress ip;
+ 
+    publish_byte(ERR_OK);
+
+    ip = pool[n].remoteIP();
+    publish_byte(ip[0]);
+    publish_byte(ip[1]);
+    publish_byte(ip[2]);
+    publish_byte(ip[3]);
+    
+    publish_word(pool[n].remotePort());
+    publish_word(pool[n].localPort());
+
+    publish_byte(TCP_STATE_ESTABLISHED);
+    publish_word(pool[n].available());
+
+    return;
+  }
+  publish_byte(ERR_NO_CONN);
 }
 
 void tcp_send(char n, unsigned int bs) {
@@ -157,7 +181,9 @@ void udp_recv(char n, unsigned int bs) {
 
     return;
   }
-
+  
+  publish_byte(ERR_OK);
+  
   IPAddress rIp = udp_pool[n].udp.remoteIP();
   unsigned int rPort = udp_pool[n].udp.remotePort();
   publish_byte(rIp[0]);

@@ -1,10 +1,10 @@
 import serial
-port = "/dev/cu.usbserial-1220" # your uart. In windows use just COM3, COM12 etc
+port = "/dev/cu.usbserial-1410" # your uart. In windows use just COM3, COM12 etc
 
 SSID     = "PinnCom"     # put here your wifi creds
 PASSWORD = "lobotomy"
 
-uart = serial.Serial(port=port, baudrate=115200)
+uart = serial.Serial(port=port, baudrate=57600)
 
 OP_Reset        = b'\x00'
 OP_GET_FEATURES = b'\x01'
