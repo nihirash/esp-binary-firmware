@@ -74,4 +74,6 @@ As you wish. I'm not against it.
 
 ## Author
 
-Alexander Sharikhin aka Nihirash.
+Alexander Sharihin aka Nihirash.
+
+I've used (ducasp's unapi driver)[https://github.com/ducasp/MSX-Development/tree/master/MSX-SM/WiFi/UNAPI_DRIVER_CUSTOM_ESP_FIRMWARE] as skeleton for my own driver. 
