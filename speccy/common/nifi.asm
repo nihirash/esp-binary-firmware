@@ -1,25 +1,27 @@
     module Nifi
-OP_Reset        = #00
-OP_GET_FEATURES = #01
-OP_GET_IP       = #02
-OP_GET_NETSTATE = #03
-OP_RESOLVE_DNS  = #06
-OP_OPEN_UDP     = #08 
-OP_CLOSE_UDP    = #09 
-OP_STATUS_UDP   = #0A 
-OP_SEND_DATAGR  = #0B 
-OP_RECV_DATAGR  = #0C 
-OP_OPEN_TCP     = #0D 
-OP_CLOSE_TCP    = #0E 
-OP_STATUS_TCP   = #10 
-OP_SEND_TCP     = #11 
-OP_RECV_TCP     = #12 
-OP_CONF_AUTO_IP = #19 
-OP_CONF_IP      = #1A 
-OP_GET_AP_LIST  = #30 
-OP_SET_AP       = #31 
-OP_GET_AP       = #32 
-OP_VERSION_STR  = #ff 
+    
+OP_Reset          = 0x00
+OP_GET_FEATURES   = 0x01
+OP_GET_IP         = 0x02
+OP_GET_NETSTATE   = 0x03
+OP_RESOLVE_DNS    = 0x06
+OP_OPEN_UDP       = 0x08
+OP_CLOSE_UDP      = 0x09
+OP_STATUS_UDP     = 0x0A
+OP_SEND_DATAGR    = 0x0B
+OP_RECV_DATAGR    = 0x0C
+OP_OPEN_TCP       = 0x0D
+OP_CLOSE_TCP      = 0x0E
+OP_STATUS_TCP     = 0x10
+OP_SEND_TCP       = 0x11
+OP_RECV_TCP       = 0x12
+OP_EXT_STATUS_TCP = 0x13
+OP_CONF_AUTO_IP   = 0x19
+OP_CONF_IP        = 0x1A
+OP_GET_AP_LIST    = 0x30
+OP_SET_AP         = 0x31
+OP_GET_AP         = 0x32
+OP_VERSION_STR    = 0xff
 
 IP_LOCAL = 1
 IP_REMOTE = 2
@@ -134,9 +136,9 @@ getApList:
 ; NZ - error flag
 ; IP will be in L.H.E.D
 resolveDns:
-    ld a, OP_RESOLVE_DNS : call Uart.write
+    ld a, OP_RESOLVE_DNS : push hl : call Uart.write : pop hl
 .loop
-    ld a, (hl) : call Uart.write
+    ld a, (hl) : push hl : call Uart.write : pop hl
     and a : jr z, .response
     inc hl
     jr .loop

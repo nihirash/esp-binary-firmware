@@ -17,7 +17,7 @@ init:
     ld bc, ZXUNO_ADDR : ld a, UART_DATA_REG : out (c), a
     ld bc, ZXUNO_REG : in A, (c)
     
-    ld bc, #ffff
+    ld bc, #fff
 .loop
     push bc
     call readnb

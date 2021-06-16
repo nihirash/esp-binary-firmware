@@ -6,7 +6,7 @@
 
 // UART
 #define BAUDRATE 115200
-#define ENABLE_FLOW
+//#define ENABLE_FLOW
 #define CTS_PIN 5
 #define RTS_PIN 4
 
@@ -17,7 +17,7 @@
 # define DEFAULT_RTS_LOW  HIGH
 
 // Exchange props
-#define MAX_FRAME 1300
+#define MAX_FRAME 512
 
 // TCP
 #define IS_NO_DELAY true

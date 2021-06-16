@@ -33,6 +33,7 @@ void get_conf_byte() {
 
 void netman_init() {
   WiFi.mode(WIFI_STA);
+  WiFi.begin();
 }
 
 void get_ap_list() {    

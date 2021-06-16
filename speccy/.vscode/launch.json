@@ -1,0 +1,41 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "dezog",
+            "request": "launch",
+            "name": "Internal simulator",
+            "remoteType": "zsim",
+            "preLaunchTask": "build",
+            "sjasmplus": [
+                {
+                    "path": "main.sld"
+                }
+            ],
+            "zsim": {
+                "visualMemory": true,
+                "memoryModel": "ZX128k",
+                "ulaScreen": true,
+                "loadZxRom": true,
+                "Z80N": false,
+                "zxKeyboard": true,
+                "memoryPagingControl": true,
+                "vsyncInterrupt": true
+            },
+            "history": {
+                "reverseDebugInstructionCount": 1000000,
+                "spotCount": 10,
+                "codeCoverageEnabled": true
+            },
+            "startAutomatically": true,
+            "disassemblerArgs": {
+                "esxdosRst": false
+            },
+            "rootFolder": "${workspaceFolder}",
+            "topOfStack": "24765",
+            "load": "test.sna",
+            "smallValuesMaximum": 513,
+            "tmpDir": ".tmp"
+        }
+    ]
+}
