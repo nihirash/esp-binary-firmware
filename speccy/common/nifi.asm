@@ -42,6 +42,7 @@ CONN_STATE_ESTABLISHED = 4 ; Really we don't care about other statuses
 ;; Tries init ESP. Sending zero and waiting for magic string
 init:
     call Uart.init
+    jr .waitForResponse
 .loop
     ld a, OP_Reset : call Uart.write
     ld d, #16
@@ -56,6 +57,15 @@ init:
     call Uart.readb : cp 'F' : jr nz, .loop
     call Uart.readb : cp 'i' : jr nz, .loop
     call Uart.readb : and a  : jr nz, .loop
+    
+    ld bc, #fff
+.flush
+    push bc
+    call Uart.readnb
+    pop bc
+    dec bc
+    ld a, b : or c : jr nz, .flush
+
     ret
 
 ; HL - buffer for response
@@ -110,6 +120,7 @@ setAp:
     ld a, (de)
     push af : call Uart.write : pop af
     and a : jr z, .passSend
+    inc de
     jr .loop
 .passSend
     pop de
@@ -117,6 +128,7 @@ setAp:
     ld a, (de)
     push af : call Uart.write : pop af
     and a : jr z, .result
+    inc de
     jr .loop2
 .result
     call Uart.readb : and a

@@ -13,7 +13,7 @@ init:
     inc b
     ld a, 1 : out (c), a
     ; Clean up buffer
-    ld bc, #1ff
+    ld bc, #fff
 .flush
     push bc
     call readnb

@@ -4,6 +4,7 @@ KEY_DN = 10
 KEY_LT = 8
 KEY_RT = 9
 BACKSPACE = 12
+RETURN = 13
 keyCode db 0 
 
 waitForKeyUp:
